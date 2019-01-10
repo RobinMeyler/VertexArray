@@ -12,13 +12,42 @@ Game::~Game() {}
 
 
 // Vertices for one Triangle
-float vertices[] = { 1.0f, 1.0f, -5.0f, -1.0f, 1.0f, -5.0f, -1.0f, -1.0f, -5.0f };
+float vertices[] = { 1.0f,  1.0f, -1.0f, 
+					-1.0f,  1.0f, -1.0f, 
+					-1.0f, -1.0f, -1.0f,
+
+					-1.0f, -1.0f, -1.0f,
+					 1.0f, -1.0f, -1.0f,
+					 1.0f,  1.0f, -1.0f,
+
+					 1.0f,  1.0f, -1.0f,
+					 1.0f,  1.0f,  1.0f,
+					 1.0f, -1.0f,  1.0f,
+
+					1.0f,  -1.0f, 1.0f,
+					1.0f,  -1.0f, -1.0f,
+					1.0f,  1.0f,  -1.0f,
+};
 
 // Colors for those vertices
-float colors[] = { 1.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f, 0.0f, 0.0f, 1.0f };
+float colors[] = {  1.0f, 0.0f, 0.0f, 
+					1.0f, 0.0f, 0.0f, 
+					1.0f, 0.0f, 0.0f,
+
+					0.0f, 1.0f, 0.0f,
+					0.0f, 1.0f, 0.0f,
+					0.0f, 1.0f, 0.0f, 
+
+					0.0f, 0.0f, 1.0f,
+					0.0f, 0.0f, 1.0f,
+					0.0f, 0.0f, 1.0f,
+
+					0.0f, 1.0f, 1.0f,
+					0.0f, 1.0f, 1.0f,
+					0.0f, 1.0f, 1.0f };
 
 // Index to be drawn
-unsigned int vertex_index[] = { 0, 1, 2 };
+unsigned int vertex_index[] = { 0, 1, 2, 3, 4, 5 };
 
 void Game::run()
 {
@@ -47,7 +76,7 @@ void Game::run()
 void Game::initialize()
 {
 	isRunning = true;
-
+	
 	//glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
@@ -59,6 +88,10 @@ void Game::update()
 {
 	elapsed = clock.getElapsedTime();
 
+	
+
+
+
 	cout << "Update up" << endl;
 }
 
@@ -68,14 +101,15 @@ void Game::render()
 
 	glEnableClientState(GL_VERTEX_ARRAY);
 	glEnableClientState(GL_COLOR_ARRAY);
-
-
+	glLoadIdentity();
+	glTranslatef(0, 0, -10);
+	glRotatef(20, 0, 1, 0);
 	glVertexPointer(3, GL_FLOAT, 0, &vertices);
 	glColorPointer(3, GL_FLOAT, 0, &colors);
 
-	//glDrawArrays(GL_TRIANGLES, 0, 3);
+	glDrawArrays(GL_TRIANGLES, 0, 12);
 
-	glDrawElements(GL_TRIANGLES, 3, GL_UNSIGNED_INT, &vertex_index);
+	//glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, &vertex_index);
 
 	glDisableClientState(GL_COLOR_ARRAY);
 	glDisableClientState(GL_VERTEX_ARRAY);

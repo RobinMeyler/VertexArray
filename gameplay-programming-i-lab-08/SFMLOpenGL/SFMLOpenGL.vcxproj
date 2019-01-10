@@ -153,11 +153,13 @@
   <ItemGroup>
     <ClInclude Include="Game.h" />
     <ClInclude Include="Matrix3.h" />
-    <ClInclude Include="Vector3.h" />
+    <ClInclude Include="MyVector3.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="Matrix3.cpp" />
+    <ClCompile Include="MyVector3.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\README.md" />
