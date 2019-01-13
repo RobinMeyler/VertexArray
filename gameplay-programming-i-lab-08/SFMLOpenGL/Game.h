@@ -24,7 +24,12 @@ private:
 	void update();
 	void render();
 	void unload();
+	void rotate();
+	void scale();
+	void displace();
 
+	MyVector3 displacement{ 1.0f,1.0f,1.0f};
+	
 	Clock clock;
 	Time elapsed;
 
